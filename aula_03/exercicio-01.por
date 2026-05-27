@@ -6,7 +6,7 @@ programa {
     escreva("Digite o ano atual: ")
     leia(anoAtual)
 
-    se(anoAtual < 2026 ou anoAtual > 2026) {
+    se(anoAtual != 2026) {
       escreva("Ano atual inválido, definindo valor para 2026.\n")
       anoAtual = 2026
     }
