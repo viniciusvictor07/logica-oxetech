@@ -2,7 +2,7 @@ programa {
   funcao inicio() {
   real valorProduto
   real valorComDesconto
-  inteiro valorParcelado
+  real valorParcelado
   real comissaoVista
   real comissaoParcelado
   
