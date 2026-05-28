@@ -38,7 +38,7 @@ programa {
     senao se(IMC <= 39.9){
       classificacao = "Obesidade grau 2"
     }
-    senao se(IMC >= 40){
+    senao { 
       classificacao = "Obesidade grau 3"
     }
 
