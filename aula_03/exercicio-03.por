@@ -18,11 +18,6 @@ programa {
     escreva("Escolha uma das opções acima: \n")
     leia(opcaoUsuario)
 
-    se(opcaoUsuario < 0 ou opcaoUsuario > 4) {
-      escreva("Opção inválida! Atribuindo escolha pra soma.\n")
-      opcaoUsuario = 1
-      }
-
     escolha (opcaoUsuario) {
       caso 1:
         escreva("Somando os números...")
@@ -37,8 +32,19 @@ programa {
         resultado = numero1 * numero2
         pare
       caso 4:
-        escreva("Dividindo os números...")
-        resultado = numero1 / numero2
+        se (numero2 == 0) {
+          escreva("Erro: Não é possível dividir por zero!")
+          resultado = 0
+          pare
+          }
+        senao {
+          escreva("Dividindo os números...")
+          resultado = numero1 / numero2´
+          pare
+        }
+      caso contrario:
+        escreva("Opção inválida! Definindo resultado para 0.")
+        resultado = 0
       }
 
     escreva("\nResultado da operação: ", resultado)
