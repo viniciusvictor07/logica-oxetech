@@ -12,12 +12,17 @@ programa {
       escreva("Qual o valor para o ", i+1, "º número? ")
       leia(numeroDigitado)
 
-      se (numeroDigitado > maiorNumero) {
+      se (i == 0) {
         maiorNumero = numeroDigitado
-      }
-
-      senao se (numeroDigitado <= menorNumero) {
         menorNumero = numeroDigitado
+      }
+      senao {
+        se (numeroDigitado > maiorNumero) {
+          maiorNumero = numeroDigitado
+        }
+        se (numeroDigitado < menorNumero) {
+          menorNumero = numeroDigitado
+        }
       }
     }
 
@@ -25,4 +30,3 @@ programa {
     escreva("Maior número digitado: ", maiorNumero, "\n")
   }
 }
-
