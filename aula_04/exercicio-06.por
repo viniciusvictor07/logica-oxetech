@@ -36,7 +36,7 @@ programa {
           }
           
           qtdRadio++
-          i++ // Só conta o cliente se a opção for válida
+          i++
           pare
         }
         caso 2: {
@@ -52,19 +52,19 @@ programa {
           }
           
           qtdTv++
-          i++ // Só conta o cliente se a opção for válida
+          i++
           pare
         }
         caso 3: {
           valorTotal += 750
           qtdRevista++
-          i++ // Só conta o cliente se a opção for válida
+          i++
           pare
         }
         caso 4: {
           valorTotal += 1500
           qtdOutdoor++
-          i++ // Só conta o cliente se a opção for válida
+          i++
           pare
         }
         caso contrario: {
