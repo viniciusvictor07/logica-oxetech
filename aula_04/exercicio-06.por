@@ -12,7 +12,8 @@ programa {
     escreva("Quantos clientes deseja cadastrar? ")
     leia(qntClientes)
 
-    para (inteiro i = 0; i < qntClientes; i++) {
+    inteiro i = 0
+    enquanto (i < qntClientes) {
       escreva("\n----- Cliente ", i+1, " -----\n")
       escreva("1. Radio\n")
       escreva("2. TV\n")
@@ -35,6 +36,7 @@ programa {
           }
           
           qtdRadio++
+          i++ // Só conta o cliente se a opção for válida
           pare
         }
         caso 2: {
@@ -50,20 +52,23 @@ programa {
           }
           
           qtdTv++
+          i++ // Só conta o cliente se a opção for válida
           pare
         }
         caso 3: {
           valorTotal += 750
           qtdRevista++
+          i++ // Só conta o cliente se a opção for válida
           pare
         }
         caso 4: {
           valorTotal += 1500
           qtdOutdoor++
+          i++ // Só conta o cliente se a opção for válida
           pare
         }
         caso contrario: {
-          escreva("Opção de mídia inválida!\n")
+          escreva("Opção de mídia inválida! Tente novamente.\n")
         }
       }
     }
