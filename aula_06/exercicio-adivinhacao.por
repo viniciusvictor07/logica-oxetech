@@ -1,72 +1,78 @@
 programa {
-  inclua biblioteca Util --> util 
+  inclua biblioteca Util -->util
   funcao inicio() {
-    // jogo da adivinhação
-    // sortear um numero entre 1 a 100
-    // permitir que o jogador de palpites até acertar
-    // para cada palpite exibir uma dica
-    // exibir o numero de palpites no final
-
-    inteiro numeroSorteado = util.sorteia(1,100)
-    inteiro numeroEscolhido
-    inteiro numeroTentativas = 0
-    caracter opcaoEscolhida
-    cadeia nomeJogador
     cadeia melhorJogador = ""
-    inteiro melhorPontuacao = 101 
-    
-    enquanto (verdadeiro) {
-      escreva("----------------------------------\n")
-      escreva("Bem vindo ao jogo da adivinhação!\n")
-      escreva("----------------------------------\n")
+    inteiro melhorPontuacao = 999
 
-      escreva(numeroSorteado, "\n")
-      
-      escreva("Digite o nome do usuário à dar palpite: \n")
+    enquanto (verdadeiro) {
+      escreva("---------------------------------\n")
+      escreva("Bem-vindo ao Jogo da Adivinhação!\n")
+      escreva("---------------------------------\n\n")
+
+      inteiro numeroSorteado = util.sorteia(1, 100)
+      inteiro numeroTentativas = 0
+      cadeia nomeJogador
+
+      escreva("Qual o seu nome ? ")
       leia(nomeJogador)
 
+      escreva("\nOlá, ", nomeJogador, "! Preparando o jogo")
+
+      util.aguarde(1000)
+      escreva(".")
+      util.aguarde(1000)
+      escreva(".")
+      util.aguarde(1000)
+      escreva(".\n\n")
+      util.aguarde(1000)
+
+      escreva("Um número de 1 a 100 foi sorteado!\n")
+      escreva("Tente adivinhar qual é! Boa sorte!\n\n")
+
       enquanto (verdadeiro) {
-        escreva(nomeJogador, ", escolha um número de 1 à 100: \n")
-        leia(numeroEscolhido)
-        
-        numeroTentativas++
-        
-        se (numeroEscolhido == numeroSorteado) {
-          se (numeroTentativas > 6) {
-          escreva("Persistência é tudo! Número de tentativas: ", numeroTentativas)
+        inteiro numeroDigitado
+
+        escreva("Qual o seu palpite ? ")
+        leia(numeroDigitado)
+
+        se (numeroDigitado < 1 ou numeroDigitado > 100) {
+          escreva("Dê um palpite entre 1 e 100. Tente novamente!\n\n")
+        } senao {
+          numeroTentativas++
+
+          se (numeroDigitado == numeroSorteado) {
+            se (numeroTentativas <= 3) {
+              escreva("Uau! Você é um gêneio da adivinhação! Número de Tentativas: ", numeroTentativas, ".\n")
+            } senao se (numeroTentativas <= 6) {
+              escreva("Muite bem! Você foi rápido! Número de Tentativas: ", numeroTentativas, ".\n") 
+            } senao {
+              escreva("Conseguiu! Persitência é tudo! Número de Tentativas: ", numeroTentativas, ".\n") 
+            }
+
+            se (numeroTentativas < melhorPontuacao) {
+              melhorPontuacao = numeroTentativas
+              melhorJogador = nomeJogador
+              escreva("\nNovo recorde! Você obteve a melhor pontuação até agora.\n")
+            }
+            pare
           }
 
-          senao se (numeroTentativas >= 4) {
-            escreva("Muito bem! você foi rápido! Número de tentativas: ", numeroTentativas)
+          se (numeroSorteado > numeroDigitado) {
+            escreva("O número sorteado é MAIOR que ", numeroDigitado, ".\n\n")
+          } senao {
+            escreva("O número sorteado é MENOR que ", numeroDigitado, ".\n\n")
           }
-
-          senao {
-            escreva("Você é um gênio da adivinhação! Número de tentativas: ", numeroTentativas)
-          }
-
-          se (numeroTentativas < melhorPontuacao) {
-            escreva("\nParabéns! Você obteve a melhor pontuação até agora.")
-            melhorPontuacao = numeroTentativas
-            melhorJogador = nomeJogador
-          }
-
-          numeroTentativas = 0
-          pare
-        } 
-        
-        se (numeroEscolhido > numeroSorteado) {
-        escreva("O número escolhido é maior que o número sorteado. Tente novamente!\n")
-        } 
-        senao {
-          escreva("O número escolhido é menor que o número sorteado. Tente novamente!\n")
         }
       }
-      
-      escreva("\nDeseja continuar? [sim/nao]: ")
-      leia(opcaoEscolhida)
 
-      se (opcaoEscolhida == 'N' ou 'n' ou "NAO" ou "nao") {
-        escreva(melhorJogador, " foi o melhor jogador, com ", melhorPontuacao, " tentativas. \n")
+      cadeia novoJogo
+
+      escreva("\nDeseja iniciar um novo jogo (sim/nao) ? ")
+      leia(novoJogo)
+      limpa()
+
+      se (novoJogo == "nao" ou novoJogo == "NAO" ou novoJogo == "n" ou novoJogo == "N") {
+        escreva("\nO melhor jogador foi ", melhorJogador, " com ", melhorPontuacao, " tentativas.\n")
         pare
       }
     }
